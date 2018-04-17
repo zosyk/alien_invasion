@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 
 
 class Alien(Sprite):
-    """A class to represent a single alient in the fleet"""
+    """A class to represent a single alien in the fleet"""
 
     def __init__(self, settings, screen):
         super(Alien, self).__init__()
@@ -11,7 +11,7 @@ class Alien(Sprite):
         self.settings = settings
 
         self.image = pygame.image.load("images/alien.png")
-        self.image = pygame.transform.scale(self.image, (56, 46))
+        self.image = pygame.transform.scale(self.image, (settings.alien_width, settings.alien_height))
         self.rect = self.image.get_rect()
 
         # Start each new alien near the top of the screen.

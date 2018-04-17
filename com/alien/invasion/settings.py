@@ -15,3 +15,11 @@ class Settings():
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed = 3
+
+        # Alien settings
+        self.alien_width = 56
+        self.alien_height = 46
+
+        # Ship settings
+        self.ship_width = 56
+        self.ship_height = 46

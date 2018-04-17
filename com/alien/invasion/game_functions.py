@@ -1,6 +1,7 @@
 import sys
 import pygame
 from bullet import Bullet
+from alien import Alien
 
 
 def check_events(settings, screen, ship, bullets):
@@ -40,12 +41,12 @@ def check_keyup_event(event, ship):
         ship.moving_left = False
 
 
-def update_screen(ai_settings, screen, ship, alien, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets):
     """Update images on the screen and flip to the new screen."""
     # Redraw the screen during each pass through the loop.
     screen.fill(ai_settings.bg_color)
     ship.blitme()
-    alien.blitme()
+    aliens.draw(screen)
     # Make the most recently drawn screen visible.
     # Redrew all bullets behind ship and aliens.
     for bullet in bullets.sprites():
@@ -62,3 +63,21 @@ def update_bullets(bullets):
             bullets.remove(bullet)
 
 
+def create_fleet(aliens, settings, screen):
+    number_aliens_x = int(settings.screen_width / (2 * settings.alien_width))
+    number_aliens_y = int(
+        (settings.screen_height - 3 * settings.alien_height - settings.ship_height) / (settings.alien_height * 2))
+
+    for row_number in range(number_aliens_y):
+        for alien_number in range(number_aliens_x):
+            aliens.add(create_alien(settings, screen, alien_number, row_number))
+
+
+def create_alien(settings, screen, alien_number, row_number):
+    alien = Alien(settings, screen)
+    alien.x = settings.alien_width + 2 * settings.alien_width * alien_number
+    alien.rect.x = alien.x
+    alien.y = settings.alien_height + 2 * settings.alien_height * row_number
+    alien.rect.y = alien.y
+
+    return alien
