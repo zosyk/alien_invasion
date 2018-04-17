@@ -1,12 +1,8 @@
-import sys
-import pygame
 import game_functions as gf
-from pygame.locals import *
-
+import pygame
+from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
-
-from pygame.sprite import Group
 
 
 def run_game():
@@ -25,12 +21,7 @@ def run_game():
     while True:
         gf.check_events(settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-
+        gf.update_bullets(bullets)
         gf.update_screen(settings, screen, ship, bullets)
 
 
