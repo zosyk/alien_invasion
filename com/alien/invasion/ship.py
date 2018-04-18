@@ -1,7 +1,7 @@
 import pygame
 
 
-class Ship():
+class Ship:
     def __init__(self, settings, screen):
         """Initialize the ship and set its starting position."""
         self.screen = screen
@@ -32,3 +32,7 @@ class Ship():
 
         if self.moving_left and self.rect.left > 0:
             self.rect.centerx -= self.settings.ship_speed_factor
+
+    def center_ship(self):
+        """Center the ship on the screen."""
+        self.center = self.screen_rect.centerx
