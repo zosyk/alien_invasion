@@ -17,12 +17,13 @@ class Settings():
         # Alien settings
         self.alien_width = 56
         self.alien_height = 46
+        self.alien_points = 50
         self.fleet_drop_speed = 10
 
         # Ship settings
-        self.ship_width = 56
-        self.ship_height = 46
-        self.ships_limit = 1
+        self.ship_width = 40
+        self.ship_height = 35
+        self.ships_limit = 3
 
         self.speedup_scale = 1.1
         self.initialize_dynamic_settings()
